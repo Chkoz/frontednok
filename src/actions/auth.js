@@ -10,7 +10,6 @@ export const startLoginEmailPassword = (email, password, sistema = 2) => {
         dispatch(startLoading());
         axios.post("/login", { email, password, sistema })
             .then(({ data }) => {
-                console.log(data)
                 if (data.res) {
                     dispatch(login(data.token));
                     dispatch(finishLoading());

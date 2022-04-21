@@ -50,7 +50,6 @@ export const TableScreen = () => {
             })
     }, [])
 
-console.log(filterhotel)
     return (
         <div className="container">
             <div>

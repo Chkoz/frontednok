@@ -1,7 +1,6 @@
 import React from 'react'
 
 const TableHotels = ( {host,openModal} ) => {
-    console.log(host)
     return (
             <table className='table table-striped'>
                 <thead>
