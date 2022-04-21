@@ -18,16 +18,20 @@ const customStyles = {
 };
 
 export const TableScreen = () => {
+
+
     const { token } = useSelector(state => state.auth)
+    const { host } = useSelector(state => state.data)
     const [datahotel, setDataHotel] = useState(null)
     const [filterhotel, setFilterHotel] = useState(null)
+    
     axios.defaults.headers.common = { 'Authorization': `Bearer ${token}` }
 
     let subtitle;
     const [modalIsOpen, setIsOpen] = React.useState(false);
 
     const openModal = (id) => {
-        setFilterHotel(datahotel.host.filter(x => x.id === id)[0])
+        setFilterHotel(datahotel.filter(x => x.id === id)[0])
         setIsOpen(true);
     }
 
@@ -41,14 +45,8 @@ export const TableScreen = () => {
     }
 
     useEffect(() => {
-        axios.get("/admin/hosts/50")
-            .then(({ data }) => {
-                setDataHotel(data)
-            })
-            .catch(error => {
-                console.log(error.response)
-            })
-    }, [])
+        setDataHotel(host)
+    }, [host])
 
     return (
         <div className="container">

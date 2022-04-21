@@ -14,7 +14,7 @@ const TableHotels = ( {host,openModal} ) => {
                 </thead>
                 <tbody>
                     {
-                        host.host.map(val => (
+                        host.map(val => (
                             <tr key={val.id}>
                                 <td><img alt='imgH' src={val.imagen} width="200px" /></td>
                                 <td>{val.nombre}</td>
