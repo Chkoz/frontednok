@@ -10,14 +10,19 @@ export const startLoginEmailPassword = (email, password, sistema = 2) => {
         dispatch(startLoading());
         axios.post("/login", { email, password, sistema })
             .then(({ data }) => {
+                console.log(data)
                 if (data.res) {
                     dispatch(login(data.token));
                     dispatch(finishLoading());
                 }
+                else{
+                    Swal.fire('Error', data.message, 'error');    
+                    dispatch(finishLoading());
+                }
             })
-            .catch(e => {
+            .catch(error => {
                 dispatch(finishLoading());
-                Swal.fire('Error', e.message, 'error');
+                Swal.fire('Error', error.message, 'error');
             });
 
 
